@@ -3,7 +3,7 @@ package es.upm.dit.isst.edoc.dao;
 import org.hibernate.Session;
 
 import es.upm.dit.isst.edoc.model.Escuela;
-
+//Comment
 public class EscuelaDAOImplementation implements EscuelaDAO {
 
 	@Override
