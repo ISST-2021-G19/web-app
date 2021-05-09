@@ -2,18 +2,17 @@ package es.upm.dit.isst.edoc.dao;
 
 import org.hibernate.Session;
 
-import es.upm.dit.isst.tfg.dao.SessionFactoryService;
-import es.upm.dit.isst.tfg.model.Professor;
+import es.upm.dit.isst.edoc.model.Subject;
 
 public class SubjectDAOImplementation implements SubjectDAO {
 	
 
-	public SubjectList read(String email) {
+	public Subject read(String email) {
 		Session session = SessionFactoryService.get().openSession();
 		session.beginTransaction();
-			Subject professor = session.get(Professor.class, email);
+			Subject subject = session.get(Subject.class, email);
 	        session.getTransaction().commit();
 			session.close();
-		return professor;
+		return subject;
 	}
 }
