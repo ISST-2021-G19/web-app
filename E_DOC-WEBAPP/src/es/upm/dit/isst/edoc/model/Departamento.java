@@ -5,17 +5,15 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-
 @Entity
-public class Professor implements Serializable{
+public class Departamento implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	private String id;
 	private String nombre;
-	private String email;
-	private String departamentoId;
-	
+	private String acronimo;
+	private String escuelaID;
 	public String getId() {
 		return id;
 	}
@@ -28,17 +26,17 @@ public class Professor implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getEmail() {
-		return email;
+	public String getAcronimo() {
+		return acronimo;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setAcronimo(String acronimo) {
+		this.acronimo = acronimo;
 	}
-	public String getDepartamentoId() {
-		return departamentoId;
+	public String getEscuelaID() {
+		return escuelaID;
 	}
-	public void setDepartamentoId(String departamentoId) {
-		this.departamentoId = departamentoId;
+	public void setEscuelaID(String escuelaID) {
+		this.escuelaID = escuelaID;
 	}
-
+	
 }
