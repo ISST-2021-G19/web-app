@@ -38,4 +38,13 @@ public class SubjectDAOImplementation implements SubjectDAO {
 		session.close();
 		return subjects;
 	}
+	
+	@Override
+	public List<Subject> readAll(String AlumnoId) {
+		List<Subject> res = new ArrayList<Subject>();
+		for (Subject subject : this.readAll())
+			if (subject.getAlumnoId().equals(AlumnoId))
+				res.add(subject);
+		return res;
+	}
 }

@@ -1,4 +1,4 @@
-package es.upm.dit.isst.edoc.model;
+ package es.upm.dit.isst.edoc.model;
 
 import java.io.Serializable;
 
