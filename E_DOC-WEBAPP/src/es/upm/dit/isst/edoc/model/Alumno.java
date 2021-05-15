@@ -2,18 +2,27 @@
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Alumno implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@Column(name = "ID")
 	private String id;
+	@Column(name = "NOMBRE")
 	private String nombre;
+	@Column(name = "EMAIL")
 	private String email;
-	private String escuelaId;
+	
+	@OneToMany
+	@JoinColumn(name="ESCUELA_ID", referencedColumnName = "ID")
+	private Escuela escuela;
 	
 	public String getId() {
 		return id;
@@ -33,12 +42,12 @@ public class Alumno implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getEscuelaId() {
-		return escuelaId;
+	public Escuela getEscuela() {
+		return escuela;
 	}
-	public void setEscuelaId(String escuelaId) {
-		this.escuelaId = escuelaId;
+	public void setEscuela(Escuela escuela) {
+		this.escuela = escuela;
 	}
-	
+
 
 }

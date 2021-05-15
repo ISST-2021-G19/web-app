@@ -67,7 +67,7 @@ public class EDOCResource {
     public Response updatePreguntaEncuesta(@PathParam("id") String id, Encuesta e) {
         System.out.println("Update request for" + id + " " + e.toString());
         Encuesta told = EncuestaDAOImplementation.getInstance().read(id);
-        if ((told == null) || (! told.getAlumnoId().contentEquals(e.getAlumnoId())))
+        if ((told == null) || (! told.getAlumno().getId().contentEquals(e.getAlumno().getId())))
           return Response.notModified().build();
         EncuestaDAOImplementation.getInstance().update(e);
         return Response.ok().build();                

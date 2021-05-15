@@ -43,7 +43,7 @@ public class SubjectDAOImplementation implements SubjectDAO {
 	public List<Subject> readAll(String AlumnoId) {
 		List<Subject> res = new ArrayList<Subject>();
 		for (Subject subject : this.readAll())
-			if (subject.getAlumnoId().equals(AlumnoId))
+			if (subject.getAlumno().getId().equals(AlumnoId))
 				res.add(subject);
 		return res;
 	}

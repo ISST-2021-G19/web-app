@@ -1,20 +1,35 @@
 package es.upm.dit.isst.edoc.model;
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Subject implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@Column(name = "ID")
 	private String id;
+	@Column(name = "NOMBRE")
 	private String nombre;
+	@Column(name = "ACRONIMO")
 	private String acronimo;
-	private String departamentoId;
-	private String profesorId;
-	private String alumnoId;
+	
+	@ManyToOne
+	@JoinColumn(name ="DEPARTAMENTO_ID", referencedColumnName = "ID")
+	private Departamento departamento ;
+	
+	@ManyToOne
+	@JoinColumn(name ="PROFESOR_ID", referencedColumnName = "ID")
+	private Profesor profesor ;
+	
+	@ManyToOne
+	@JoinColumn(name ="ALUMNO_ID", referencedColumnName = "ID")
+	private Alumno alumno ;
 	
 	public String getId() {
 		return id;
@@ -34,23 +49,24 @@ public class Subject implements Serializable {
 	public void setAcronimo(String acronimo) {
 		this.acronimo = acronimo;
 	}
-	public String getDepartamentoId() {
-		return departamentoId;
+	public Departamento getDepartamento() {
+		return departamento;
 	}
-	public void setDepartamentoId(String departamentoId) {
-		this.departamentoId = departamentoId;
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
 	}
-	public String getProfesorId() {
-		return profesorId;
+	public Profesor getProfesor() {
+		return profesor;
 	}
-	public void setProfesorId(String profesorId) {
-		this.profesorId = profesorId;
+	public void setProfesor(Profesor profesor) {
+		this.profesor = profesor;
 	}
-	public String getAlumnoId() {
-		return alumnoId;
+	public Alumno getAlumno() {
+		return alumno;
 	}
-	public void setAlumnoId(String alumnoId) {
-		this.alumnoId = alumnoId;
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
 	}
+
 
 }

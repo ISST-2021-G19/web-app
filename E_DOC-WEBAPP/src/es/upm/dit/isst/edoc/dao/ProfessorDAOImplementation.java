@@ -8,7 +8,7 @@ import org.hibernate.query.Query;
 
 import es.upm.dit.isst.edoc.dao.ProfessorDAOImplementation;
 import es.upm.dit.isst.edoc.dao.SessionFactoryService;
-import es.upm.dit.isst.edoc.model.Professor;
+import es.upm.dit.isst.edoc.model.Profesor;
 
 public class ProfessorDAOImplementation implements ProfessorDAO {
 	public static ProfessorDAOImplementation instance;
@@ -21,16 +21,16 @@ public class ProfessorDAOImplementation implements ProfessorDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Professor login(String email, String password) {
+	public Profesor login(String email, String password) {
 		Session session = SessionFactoryService.get().openSession();
-		Professor professor = null;
+		Profesor professor = null;
 			session.beginTransaction();
 			Query q = session.createQuery("select p from Professor p where p.email = :email and p.password = :password");
 			q.setParameter("email", email);
 			q.setParameter("password", password);
-			List<Professor> profs = q.getResultList();
+			List<Profesor> profs = q.getResultList();
 			if (profs.size() > 0)
-				professor = (Professor) (q.getResultList().get(0));
+				professor = (Profesor) (q.getResultList().get(0));
 	        session.getTransaction().commit();
 			session.close();
 		return professor;
@@ -38,7 +38,7 @@ public class ProfessorDAOImplementation implements ProfessorDAO {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public void create(Professor professor) {
+	public void create(Profesor professor) {
 		Session session = SessionFactoryService.get().openSession();
 			session.beginTransaction();
 			session.save(professor);
@@ -48,10 +48,10 @@ public class ProfessorDAOImplementation implements ProfessorDAO {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public Professor read(String email) {
+	public Profesor read(String email) {
 		Session session = SessionFactoryService.get().openSession();
 		session.beginTransaction();
-			Professor professor = session.get(Professor.class, email);
+			Profesor professor = session.get(Profesor.class, email);
 	        session.getTransaction().commit();
 			session.close();
 		return professor;
@@ -59,17 +59,17 @@ public class ProfessorDAOImplementation implements ProfessorDAO {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Professor> readAll() {
+	public List<Profesor> readAll() {
 		Session session = SessionFactoryService.get().openSession();
 		session.beginTransaction();
-		List<Professor> professors = new ArrayList<Professor>();
+		List<Profesor> professors = new ArrayList<Profesor>();
 		professors.addAll( session.createQuery("from Professor").list() );	
 		session.getTransaction().commit();
 		session.close();
 		return professors;
 	}
 	@Override
-	public void update(Professor professor) {
+	public void update(Profesor professor) {
 		Session session = SessionFactoryService.get().openSession();
 			session.beginTransaction();
 			session.saveOrUpdate(professor);
@@ -77,7 +77,7 @@ public class ProfessorDAOImplementation implements ProfessorDAO {
 			session.close();
 	}
 	@Override
-	public void delete(Professor professor) {
+	public void delete(Profesor professor) {
 		Session session = SessionFactoryService.get().openSession();
 			session.beginTransaction();
 			session.delete(professor);

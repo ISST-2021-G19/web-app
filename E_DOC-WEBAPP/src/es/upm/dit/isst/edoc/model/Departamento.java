@@ -1,19 +1,31 @@
 package es.upm.dit.isst.edoc.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Departamento implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@Column (name = "ID")
 	private String id;
+	@Column (name = "NOMBRE")
 	private String nombre;
+	@Column (name = "ACRONIMO")
 	private String acronimo;
-	private String escuelaID;
+	
+	@ManyToOne
+	@JoinColumn(name = "ESCUELA_ID", referencedColumnName = "ID")
+	private Escuela escuela;
+	
 	public String getId() {
 		return id;
 	}
@@ -32,11 +44,11 @@ public class Departamento implements Serializable{
 	public void setAcronimo(String acronimo) {
 		this.acronimo = acronimo;
 	}
-	public String getEscuelaID() {
-		return escuelaID;
+	public Escuela getEscuela() {
+		return escuela;
 	}
-	public void setEscuelaID(String escuelaID) {
-		this.escuelaID = escuelaID;
+	public void setEscuela(Escuela escuela) {
+		this.escuela = escuela;
 	}
 	
 }

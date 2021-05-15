@@ -3,19 +3,32 @@ package es.upm.dit.isst.edoc.model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Encuesta implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@Column(name = "ID")
 	private String id;
+	@Column(name = "Fecha")
 	private Timestamp fecha;
-	private String subjectId;
-	private String profesorId;
-	private String alumnoId;
+	
+	@ManyToOne
+	@JoinColumn(name = "SUBJECT_ID", referencedColumnName = "ID")
+	private Subject subject;
+	@ManyToOne
+	@JoinColumn(name = "PROFESSOR_ID", referencedColumnName = "ID")
+	private Profesor profesor;
+	
+	@ManyToOne
+	@JoinColumn(name = "ALUMNO_ID", referencedColumnName = "ID")
+	private Alumno alumno;
 	
 	public String getId() {
 		return id;
@@ -29,25 +42,23 @@ public class Encuesta implements Serializable{
 	public void setFecha(Timestamp fecha) {
 		this.fecha = fecha;
 	}
-	public String getSubjectId() {
-		return subjectId;
+	public Subject getSubject() {
+		return subject;
 	}
-	public void setSubjectId(String subjectId) {
-		this.subjectId = subjectId;
+	public void setSubject(Subject subject) {
+		this.subject = subject;
 	}
-	public String getProfesorId() {
-		return profesorId;
+	public Profesor getProfesor() {
+		return profesor;
 	}
-	public void setProfesorId(String profesorId) {
-		this.profesorId = profesorId;
+	public void setProfesor(Profesor profesor) {
+		this.profesor = profesor;
 	}
-	public String getAlumnoId() {
-		return alumnoId;
+	public Alumno getAlumno() {
+		return alumno;
 	}
-	public void setAlumnoId(String alumnoId) {
-		this.alumnoId = alumnoId;
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
 	}
-	
-	
-	
+		
 }
