@@ -4,27 +4,65 @@
   <artifactId>E_DOC-WEBAPP</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-<build>
-		<sourceDirectory>src</sourceDirectory>
-		<plugins>
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>3.0.0</version>
-				<configuration>
-					<warSourceDirectory>WebContent</warSourceDirectory>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-   <dependencies>
+ <build>
+
+    <plugins>
+
+      <plugin>
+
+        <artifactId>maven-compiler-plugin</artifactId>
+
+        <version>3.8.0</version>
+
+        <configuration>
+
+          <source>1.8</source>
+
+          <target>1.8</target>
+
+        </configuration>
+
+      </plugin>
+
+      <plugin>
+
+        <artifactId>maven-war-plugin</artifactId>
+
+        <version>3.3.1</version>
+
+        <configuration>
+
+          <warSourceDirectory>WebContent</warSourceDirectory>
+
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+
+        </configuration>
+
+      </plugin>
+
+      <plugin>
+
+            <artifactId>maven-surefire-plugin</artifactId>
+
+            <version>2.22.2</version>
+
+      </plugin>
+
+      <plugin>
+
+            <artifactId>maven-failsafe-plugin</artifactId>
+
+            <version>2.22.2</version>
+
+      </plugin>
+
+    </plugins>
+
+  </build>
+
+ 
+
+  <dependencies>
 
         <dependency>
 
@@ -195,4 +233,5 @@
          </dependency>  
 
   </dependencies>
+
 </project>
